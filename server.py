@@ -35,15 +35,15 @@ def handle(client):
 def receive():
     while True:
         client, address = server.accept()
-        print('Conectado com'+str(address))
+        print('Conectado com '+str(address))
 
         client.send('NOME'.encode('ascii'))
         nickname = client.recv(1024).decode('ascii')
         nicknames.append(nickname)
         clients.append(client)
 
-        print('O nome do cliente e'+nickname)
-        s = nickname+'entrou no chat!'
+        print('O nome do cliente e '+nickname)
+        s = nickname+' entrou no chat!'
         broadcast(s.encode('ascii'))
         client.send('Conectado no servidor!'.encode('ascii'))
 
