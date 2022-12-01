@@ -7,7 +7,7 @@ import threading
 nickname = input("Escolha um apelido: ")
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.connect(('192.168.1.19', 55555))
+client.connect(('192.168.104.25', 55555))
 
 def receive():
     while True:
@@ -24,7 +24,7 @@ def receive():
 
 def write():
     while True:
-        message = f'{nickname}: {input("")}'
+        message = nickname+": "+input("")
         client.send(message.encode('ascii'))
 
 receiveThread = threading.Thread(target=receive)
